@@ -18,7 +18,7 @@ for j in file_list:
     canny = cv2.Canny(gray, 100, 200)
     lines = cv2.HoughLinesP(canny, 3.8, np.pi / 180, 100, minLineLength = 50, maxLineGap = 10)
 
-    if lines is None: #HoughlinesP에서 매개변수가 잘못전달되면 None으로 반환되기에 에러가 걸린다 그것을 방지하기위함이다
+    if lines is None: #HoughlinesP에서 선이 검출되지 않는다면 None으로 반환되기에 그것을 방지하기위함이다
         cv2.imwrite('./notfiltered/(notfilter)'+j,dst2)
         failed_count += 1
     else:
